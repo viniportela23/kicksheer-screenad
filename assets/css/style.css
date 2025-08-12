@@ -1,0 +1,240 @@
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Efeitos de Fundo */
+body {
+    background-color: #19222b;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: radial-gradient(
+        circle,
+        rgba(58, 153, 213, 0.1) 0%,
+        rgba(113, 189, 183, 0.1) 50%,
+        rgba(199, 253, 131, 0.05) 100%
+    );
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+/* Animações */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20%, 100% {
+        left: 100%;
+    }
+}
+
+/* Container de Login */
+.login-container {
+    background-color: rgba(25, 34, 43, 0.8);
+    width: 400px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(58, 153, 213, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(58, 153, 213, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+/* Cabeçalho */
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-header h1 {
+    color: #c7fd83;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.login-header p {
+    color: #71bdb7;
+    font-size: 14px;
+}
+
+/* Campos de Entrada */
+.input-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: rgba(25, 34, 43, 0.5);
+    border: 1px solid rgba(58, 153, 213, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #3a99d5;
+    box-shadow: 0 0 0 2px rgba(58, 153, 213, 0.2);
+}
+
+.input-group label {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    color: #71bdb7;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    background-color: #19222b;
+    padding: 0 5px;
+    color: #c7fd83;
+}
+
+/* Opções Adicionais */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 8px;
+    accent-color: #3a99d5;
+}
+
+.remember-me label {
+    color: #71bdb7;
+}
+
+.forgot-password a {
+    color: #c7fd83;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+    color: #3a99d5;
+    text-decoration: underline;
+}
+
+/* Botão */
+.login-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #3a99d5, #71bdb7);
+    border: none;
+    border-radius: 8px;
+    color: #19222b;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-button:hover {
+    background: linear-gradient(45deg, #71bdb7, #c7fd83);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 153, 213, 0.3);
+}
+
+/* Link de Cadastro */
+.signup-link {
+    text-align: center;
+    margin-top: 30px;
+    color: #71bdb7;
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: #c7fd83;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.signup-link a:hover {
+    color: #3a99d5;
+    text-decoration: underline;
+}
+
+/* Elementos Decorativos */
+.decoration {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(199, 253, 131, 0.1) 0%, transparent 70%);
+}
+
+.decoration:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+}
+
+.decoration:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    right: -50px;
+    background: radial-gradient(circle, rgba(58, 153, 213, 0.1) 0%, transparent 70%);
+}

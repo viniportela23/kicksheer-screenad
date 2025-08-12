@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kicksheer - Acesso do Adminstrador</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="decoration"></div>
+    <div class="decoration"></div>
+    
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Acesso do Adminstrador</h1>
+        </div>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="text" id="username" required>
+                <label for="username">Usuário</label>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" required>
+                <label for="password">Senha</label>
+            </div>
+            
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Lembrar-me</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-button">Entrar</button>
+            
+            <div class="signup-link">
+                Não tem uma conta? <a href="#">Registre-se</a>
+            </div>
+        </form>
+    </div>
+    <!-- No final do <body>, antes do auth.js -->
+    <script src="./assets/js/authService.js"></script>
+    <script src="./assets/js/apiService.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/auth.js"></script></body>
+</html>
