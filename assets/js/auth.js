@@ -1,7 +1,3 @@
-// Certifique-se de carregar os serviços primeiro
-// Se estiver usando módulos:
-// import { apiService, AuthService } from './main.js';
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
@@ -12,22 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
             const remember = document.getElementById('remember').checked;
             
+            // Variável originalText precisa ser declarada fora do try para ser acessível no catch
+            let originalText;
+            const loginButton = e.target.querySelector('button[type="submit"]');
+            
             try {
-                const loginButton = e.target.querySelector('button[type="submit"]');
-                const originalText = loginButton.textContent;
-                loginButton.disabled = true;
-                loginButton.textContent = 'Autenticando...';
+                if (loginButton) {
+                    originalText = loginButton.textContent;
+                    loginButton.disabled = true;
+                    loginButton.textContent = 'Autenticando...';
+                }
 
                 const response = await apiService.login(username, password, remember);
                 
                 AuthService.setToken(response.token, remember);
-                window.location.href = '/dashboard.html';
+                
+                // Notificação de sucesso
+                window.location.href = './dashboard.html';
                 
             } catch (error) {
                 console.error('Erro:', error);
-                alert(error.message || 'Erro ao fazer login');
                 
-                const loginButton = e.target.querySelector('button[type="submit"]');
+                // Notificação de erro
+                toastr.error(error.message || 'Erro ao fazer login', 'Erro', {
+                    timeOut: 5000
+                });
+                
                 if (loginButton) {
                     loginButton.disabled = false;
                     loginButton.textContent = originalText;

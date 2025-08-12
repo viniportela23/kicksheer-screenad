@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kicksheer - Dashboard Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+    <div class="decoration"></div>
+    <div class="decoration"></div>
+    
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Kicksheer</h2>
+                <p>Painel Admin</p>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span>Home</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Cardápio Ativos</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Produtos do cardápio</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Layout de cardápios</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Desativado</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Desativado</span>
+                </a>
+                <a href="./anuncios.html" class="menu-item" target="_blank">
+                    <span>Tela de Anuncios</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn">Sair</a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="user-info">
+                    <span>Bem-vindo, Admin</span>
+                </div>
+                
+                <div class="notifications">
+                    <div class="notification-item">
+                        <span class="notification-badge">3</span>
+                        <span>Alertas</span>
+                    </div>
+                    <div class="notification-item">
+                        <span>Vencimento: 12/10/2026</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="content">
+                <div class="content-header">
+                    <h2>Lista de anúncios</h2>
+                    <button class="add-new-btn">Adicionar Novo</button>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data de Início</th>
+                                <th>Data de Fim</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Item 1</td>
+                                <td>10/08/2023</td>
+                                <td>10/09/2023</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td>
+                                    <button class="action-btn edit">Editar</button>
+                                    <button class="action-btn deactivate">Desativar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Item 2</td>
+                                <td>15/08/2023</td>
+                                <td>15/10/2023</td>
+                                <td><span class="status-badge inactive">Inativo</span></td>
+                                <td>
+                                    <button class="action-btn edit">Editar</button>
+                                    <button class="action-btn activate">Ativar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Item 3</td>
+                                <td>20/08/2023</td>
+                                <td>20/11/2023</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td>
+                                    <button class="action-btn edit">Editar</button>
+                                    <button class="action-btn deactivate">Desativar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/verifica-token-sesao.js"></script>
+    <script src="./assets/js/clear-token.js"></script>
+    <script src="./assets/js/authService.js"></script>
+    <script src="./assets/js/apiService.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/dashboard.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+</html>
