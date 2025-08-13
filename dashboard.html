@@ -19,28 +19,42 @@
                 <p>Painel do adimistrador</p>
             </div>
             
-            <nav class="sidebar-menu">
-                <a href="#" class="menu-item active">
-                    <span>Lista de anúnciantes</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span>Cardápio ativos</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span>Produtos do cardápio</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span>Layout de cardápios</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span>Desativado</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span>Desativado</span>
-                </a>
-                <a href="./anuncios.html" class="menu-item" target="_blank">
-                    <span>Tela de Anuncios</span>
-                </a>
+            <nav id="nav-menu" class="sidebar-menu">
+                <div id="div-anunciantes">
+                    <a href="#" id="btn-anunciantes" class="menu-item">
+                        <span>Lista de anúnciantes</span>
+                    </a>
+                </div>
+                <div id="div-cardapios-ativos">
+                    <a href="#" id="btn-cardapios-ativos" class="menu-item">
+                        <span>Cardápio ativos</span>
+                    </a>
+                </div>
+                <div id="div-prod-cardapio">
+                    <a href="#" id="btn-prod-cardapio" class="menu-item">
+                        <span>Produtos do cardápio</span>
+                    </a>
+                </div>
+                <div id="div-layout-cardapio">
+                    <a href="#" id="btn-layout-cardapio" class="menu-item">
+                        <span>Layout de cardápios</span>
+                    </a>
+                </div>
+                <div id="div-destivado1">
+                    <a href="#" class="menu-item">
+                        <span>Desativado</span>
+                    </a>
+                </div>
+                <div id="div-destivado2">
+                    <a href="#" class="menu-item">
+                        <span>Desativado</span>
+                    </a>
+                </div>
+                <div id="div-tela-de-anuncios">
+                    <a href="./anuncios.html" class="menu-item" target="_blank">
+                        <span>Tela de Anuncios</span>
+                    </a>
+                </div>
             </nav>
             
             <div class="sidebar-footer">
@@ -72,14 +86,14 @@
                 
                 <div class="table-container">
                     <table>
-                        <thead>
+                        <thead id="cabecalho-da-tabela">
                             <tr>
-                                <th>Nome</th>
-                                <th>Tempo</th>
-                                <th>Data Criação</th>
-                                <th>Data Finalização</th>
-                                <th>Status</th>
-                                <th>Ações</th>
+                                <th>--</th>
+                                <th>--</th>
+                                <th>--</th>
+                                <th>--</th>
+                                <th>--</th>
+                                <th>--</th>
                             </tr>
                         </thead>
                         <tbody id="corpo-da-tabela">
@@ -126,6 +140,9 @@
     <script src="./assets/js/apiService.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/anunciantes.js"></script>
+    <script src="./assets/js/add-anunciantes.js"></script>
+    <script src="./assets/js/prod-cardapio.js"></script>
+    <script src="./assets/js/add-prod-cardapio.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
