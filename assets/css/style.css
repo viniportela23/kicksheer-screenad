@@ -489,3 +489,28 @@ tr:hover {
 .action-btn.deactivate:hover {
     background-color: rgba(244, 67, 54, 0.3);
 }
+.action-btn.delete {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #c62828;
+}
+
+.action-btn.delete:hover {
+    background-color: rgba(244, 67, 54, 0.3);
+}
+#corpo-da-tabela {
+    display: block; /* Necessário para que height e overflow funcionem */
+    max-height: 300px; /* Ajuste esta altura conforme necessário */
+    overflow-y: auto; /* Habilita a rolagem vertical quando necessário */
+}
+
+/* Mantém o alinhamento das colunas entre thead e tbody */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Mantém as colunas alinhadas */
+}

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tituloBody.innerHTML = '<h2 id="titulo-pagina">Lista de anúnciantes</h2>';
 
-        btnAddBody.innerHTML = '<button id="botao-adicao" class="add-new-btn">Adicionar anúncio</button>';
+        btnAddBody.innerHTML = '<button class="add-new-btn">Adicionar anúncio</button>';
 
         try {
             // Faz a requisição para a API

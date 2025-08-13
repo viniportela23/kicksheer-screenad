@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kicksheer - Dashboard Admin</title>
+    <link rel="icon" href="assets/imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -81,12 +82,15 @@
             <div class="content">
                 <div class="content-header">
                     <h2 id="titulo-pagina">Listas</h2>
-                    <button id="botao-adicao" class="add-new-btn">Adicionar</button>
+                    <div id="botao-adicao">
+                        <button class="add-new-btn">Adicionar</button>
+                    </div>
                 </div>
                 
                 <div class="table-container">
                     <table>
                         <thead id="cabecalho-da-tabela">
+                            <!--
                             <tr>
                                 <th>--</th>
                                 <th>--</th>
@@ -95,8 +99,10 @@
                                 <th>--</th>
                                 <th>--</th>
                             </tr>
+                            -->
                         </thead>
                         <tbody id="corpo-da-tabela">
+                            <!--
                             <tr>
                                 <td>Item 1</td>
                                 <td>10/08/2023</td>
@@ -127,6 +133,7 @@
                                     <button class="action-btn deactivate">Desativar</button>
                                 </td>
                             </tr>
+                            -->
                         </tbody>
                     </table>
                 </div>
@@ -137,14 +144,14 @@
     <script src="./assets/js/verifica-token-sesao.js"></script>
     <script src="./assets/js/clear-token.js"></script>
     <script src="./assets/js/token-service.js"></script>
-    <script src="./assets/js/apiService.js"></script>
+    <script src="./assets/js/api-service.js"></script>
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/anunciantes.js"></script>
-    <script src="./assets/js/add-anunciantes.js"></script>
-    <script src="./assets/js/prod-cardapio.js"></script>
-    <script src="./assets/js/add-prod-cardapio.js"></script>
-    <script src="./assets/js/layout-cardapio.js"></script>
-    <script src="./assets/js/add-layout-cardapio.js"></script>
+    <script src="./assets/js/dashboard/anunciantes.js"></script>
+    <script src="./assets/js/dashboard/add-anunciantes.js"></script>
+    <script src="./assets/js/dashboard/prod-cardapio.js"></script>
+    <script src="./assets/js/dashboard/add-prod-cardapio.js"></script>
+    <script src="./assets/js/dashboard/layout-cardapio.js"></script>
+    <script src="./assets/js/dashboard/add-layout-cardapio.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
