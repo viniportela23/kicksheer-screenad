@@ -16,12 +16,12 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <h2>Kicksheer</h2>
-                <p>Painel Admin</p>
+                <p>Painel do adimistrador</p>
             </div>
             
             <nav class="sidebar-menu">
                 <a href="#" class="menu-item active">
-                    <span>Home</span>
+                    <span>Lista de anúnciantes</span>
                 </a>
                 <a href="#" class="menu-item">
                     <span>Cardápio ativos</span>
@@ -66,8 +66,8 @@
             <!-- Content -->
             <div class="content">
                 <div class="content-header">
-                    <h2>Lista de anúncios</h2>
-                    <button class="add-new-btn">Adicionar anúncio</button>
+                    <h2 id="titulo-pagina">Lista de anúnciantes</h2>
+                    <button id="botao-adicao" class="add-new-btn">Adicionar anúncio</button>
                 </div>
                 
                 <div class="table-container">
@@ -81,7 +81,7 @@
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="corpo-da-tabela">
                             <tr>
                                 <td>Item 1</td>
                                 <td>10/08/2023</td>
@@ -121,7 +121,7 @@
 
     <script src="./assets/js/verifica-token-sesao.js"></script>
     <script src="./assets/js/clear-token.js"></script>
-    <script src="./assets/js/authService.js"></script>
+    <script src="./assets/js/token-service.js"></script>
     <script src="./assets/js/apiService.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/dashboard.js"></script>
