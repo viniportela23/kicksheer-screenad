@@ -2,28 +2,31 @@ class ApiService {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
     }
-
-    async request(endpoint, method = 'GET', data = null) {
+    async request(endpoint, method = 'GET', data = null, isFormData = false) {
         const url = `${this.baseUrl}/${endpoint}`;
-        const headers = {
-            'Content-Type': 'application/json'
-        };
-
-        // Adiciona token se existir
-        const token = AuthService.getToken();
-        if (token) {
-            headers['Authorization'] = `Bearer ${token}`;
-        }
-
+        const headers = {};
         const config = {
             method,
             headers,
             credentials: 'include'
         };
 
-        if (data) {
-            config.body = JSON.stringify(data);
+        if (!isFormData) {
+            headers['Content-Type'] = 'application/json';
+            if (data) {
+                config.body = JSON.stringify(data);
+            }
+        } else {
+            if (data) {
+                config.body = data;
+            }
         }
+        // Adiciona token se existir
+        const token = AuthService.getToken();
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
 
         try {
             const response = await fetch(url, config);
@@ -56,4 +59,29 @@ class ApiService {
     async prodCardapio() {
         return this.request('lista/prodCardapio', 'POST');
     }
+
+    async addAnunciantes(nome, arquivo, tempo, data_finalizacao, status) {
+        const formData = new FormData();
+        formData.append('nome', nome);
+        formData.append('tempo', tempo);
+        formData.append('data_finalizacao', data_finalizacao);
+        formData.append('status', status);
+        formData.append('arquivo', arquivo);
+
+        return this.request('adiciona/anunciantes', 'POST', formData, true);
+    }
+
+    async addProdCardapio(nome, preco, status) {
+        return this.request('adiciona/prodCardapio', 'POST', { nome, preco, status });
+    }
+
+    async addLayoutCardapio(nome, arquivo, status) {
+        const formData = new FormData();
+        formData.append('nome', nome);
+        formData.append('status', status);
+        formData.append('arquivo', arquivo);
+
+        return this.request('adiciona/layoutCardapio', 'POST', formData, true);
+    }
+
 }

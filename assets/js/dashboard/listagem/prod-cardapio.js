@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tituloBody.innerHTML = '<h2 id="titulo-pagina">Produtos do Cardápio</h2>';
 
-        btnAddBody.innerHTML = '<button class="add-new-btn">Adicionar Produto</button>';
+        btnAddBody.innerHTML = '<button id="btn-adicionar-prod-cardapio" class="add-new-btn">Adicionar Produto</button>';
 
         document.querySelectorAll('.menu-item').forEach(item => {
             item.classList.remove('active');
