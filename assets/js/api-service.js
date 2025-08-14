@@ -32,6 +32,7 @@ class ApiService {
             if (!response.ok) {
                 throw new Error(responseData.message || 'Erro na requisição');
             }
+            AuthService.setToken(responseData.token);
 
             return responseData;
         } catch (error) {

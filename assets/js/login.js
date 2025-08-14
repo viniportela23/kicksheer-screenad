@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const remember = document.getElementById('remember').checked;
+            //const remember = document.getElementById('remember').checked;
             
             // Variável originalText precisa ser declarada fora do try para ser acessível no catch
             let originalText;
@@ -19,9 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     loginButton.textContent = 'Autenticando...';
                 }
 
-                const response = await apiService.login(username, password, remember);
+                //const response = await apiService.login(username, password, remember);
+
+                const response = await apiService.login(username, password);
                 
-                AuthService.setToken(response.token, remember);
+                //AuthService.setToken(response.token, remember);
+
+                AuthService.setToken(response.token);
                 
                 // Notificação de sucesso
                 window.location.href = './dashboard.html';
