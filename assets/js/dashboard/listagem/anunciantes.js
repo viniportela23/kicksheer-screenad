@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Faz a requisição para a API
-            const response = await apiService.request('lista/anunciantes', 'POST');
+            const response = await apiService.anunciantes();
             
             // Limpa a tabela novamente antes de adicionar os dados
             tableBody.innerHTML = '';

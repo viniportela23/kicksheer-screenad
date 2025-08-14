@@ -44,4 +44,16 @@ class ApiService {
     async login(username, password, remember) {
         return this.request('auth/login', 'POST', { username, password, remember });
     }
+
+    async anunciantes() {
+        return this.request('lista/anunciantes', 'POST');
+    }
+
+    async layoutCardapio() {
+        return this.request('lista/layoutCardapio', 'POST');
+    }
+
+    async prodCardapio() {
+        return this.request('lista/prodCardapio', 'POST');
+    }
 }

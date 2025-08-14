@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
@@ -23,11 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //const response = await apiService.login(username, password, remember);
 
                 const response = await apiService.login(username, password);
-                
-                //AuthService.setToken(response.token, remember);
-
-                AuthService.setToken(response.token);
-                
+                                
                 // Notificação de sucesso
                 window.location.href = './dashboard.html';
                 

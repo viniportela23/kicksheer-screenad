@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Faz a requisição para a API
-            const response = await apiService.request('lista/prodCardapio', 'POST');
+            const response = await apiService.prodCardapio();
             
             // Limpa a tabela novamente antes de adicionar os dados
             tableBody.innerHTML = '';
