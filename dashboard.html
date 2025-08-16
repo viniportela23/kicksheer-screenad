@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kicksheer - Dashboard Admin</title>
+    <title>Kicksheer - Dashboard</title>
     <link rel="icon" href="assets/imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/modal.css">
@@ -18,7 +18,7 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <h2>Kicksheer</h2>
-                <p>Painel do adimistrador</p>
+                <p>Painel do usuário</p>
             </div>
             
             <nav id="nav-menu" class="sidebar-menu">
@@ -68,13 +68,13 @@
         <div class="main-content">
             <!-- Top Bar -->
             <div class="top-bar">
-                <div class="user-info">
-                    <span>Bem-vindo, Admin</span>
+                <div id="nome-user" class="user-info">
+                    <span>Bem-vindo</span>
                 </div>
                 
                 <div class="notifications">
-                    <div class="notification-item">
-                        <span>Vencimento: 12/10/2026</span>
+                    <div id="vencimento-user" class="notification-item">
+                        <span></span>
                     </div>
                 </div>
             </div>
@@ -148,15 +148,20 @@
     <script src="./assets/js/api-service.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/dashboard/base-modal.js"></script>
+
+    <script src="./assets/js/dashboard/listagem/dados-usuario.js"></script>
     <script src="./assets/js/dashboard/listagem/anunciantes.js"></script>
     <script src="./assets/js/dashboard/listagem/prod-cardapio.js"></script>
     <script src="./assets/js/dashboard/listagem/layout-cardapio.js"></script>
+
     <script src="./assets/js/dashboard/adicao/add-anunciantes.js"></script>
     <script src="./assets/js/dashboard/adicao/add-prod-cardapio.js"></script>
     <script src="./assets/js/dashboard/adicao/add-layout-cardapio.js"></script>
+
     <script src="./assets/js/dashboard/edicao/edit-anunciantes.js"></script>
     <script src="./assets/js/dashboard/edicao/edit-prod-cardapio.js"></script>
     <script src="./assets/js/dashboard/edicao/edit-layout-cardapio.js"></script>
+
     <script src="./assets/js/dashboard/deletar/delet-anunciantes.js"></script>
     <script src="./assets/js/dashboard/deletar/delet-prod-cardapio.js"></script>
     <script src="./assets/js/dashboard/deletar/delet-layout-cardapio.js"></script>

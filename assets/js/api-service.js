@@ -48,6 +48,10 @@ class ApiService {
         return this.request('auth/login', 'POST', { username, password, remember });
     }
 
+    async usuario() {
+        return this.request('lista/usuario', 'POST');
+    }
+
     async anunciantes(id = null) {
         return this.request('lista/anunciantes', 'POST', { id });
     }
