@@ -78,8 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${dataCriacao}</td>
                     <td>${status}</td>
                     <td>
-                        <button class="action-btn edit">Editar</button>
-                        <button ${btnStatus}</button>
+                        <button id="btn-editar-produto" id-produto="${produto.id}" class="action-btn edit">Editar</button>
+                        <button id="btn-alterar-status-produto" id-produto="${produto.id}" ${btnStatus}</button>
+                        <button id="btn-deletar-produto" id-produto="${produto.id}" class="action-btn delete">Excluir</button>
                     </td>
                 `;
                 

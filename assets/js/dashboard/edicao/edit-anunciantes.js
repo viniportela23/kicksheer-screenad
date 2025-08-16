@@ -80,7 +80,7 @@ function setupAddAnunciantesModal() {
 function setupGlobalEventListenersAnunciantes() {
   // Event delegation para o botão de adicionar produto
   document.addEventListener('click', function(event) {
-    if (event.target && event.target.id === 'btn-adicionar-anunciante') {
+    if (event.target && event.target.id === 'btn-editar-anunciante') {
       setupAddAnunciantesModal();
     }
   });

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btnLayoutCardapioBody.innerHTML = '<a href="#" id="btn-layout-cardapio" class="menu-item active"><span>Layout de cardápios</span></a>';
 
-        cabecalhoTableBody.innerHTML = '<tr><th>Nome</th><th>Imagem</th><th>Ações</th></tr>';
+        cabecalhoTableBody.innerHTML = '<tr><th>Nome</th><th>Imagem</th><th>Status</th><th>Ações</th></tr>';
 
         tableBody.innerHTML = '<tr><td colspan="3" class="text-center">Carregando layouts...</td></tr>';
 
@@ -54,17 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
             response.dados.forEach(layout => {
                 const row = document.createElement('tr');
                 
-                // Cria o link para a imagem
+                const status = layout.status === 1 ? 
+                    '<span class="status-badge active">Ativo</span>' : 
+                    '<span class="status-badge inactive">Inativo</span>';
+
+                const btnStatus = layout.status === 1 ? 
+                    'class="action-btn deactivate">Desativar' : 
+                    'class="action-btn activate">Ativar';
+
                 const imagemLink = layout.imagem ? 
                     `<img src="http://192.168.0.104/api/uploads/layouts/${layout.imagem}" alt="Girl in a jacket" width="50">` : 
                     '<i class="fas fa-image" style="color: #ccc;"></i>';
-                
+
+
                 row.innerHTML = `
                     <td>${layout.nome}</td>
                     <td>${imagemLink}</td>
+                    <td>${status}</td>
                     <td>
-                        <button class="action-btn edit">Editar</button>
-                        <button class="action-btn delete">Excluir</button>
+                        <button id="btn-editar-layout" id-layout="${layout.id}" class="action-btn edit">Editar</button>
+                        <button id="btn-alterar-status-layout" id-layout="${layout.id}" ${btnStatus}</button>
+                        <button id="btn-deletar-layout" id-layout="${layout.id}" class="action-btn delete">Excluir</button>
                     </td>
                 `;
                 

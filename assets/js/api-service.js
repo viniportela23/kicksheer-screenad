@@ -48,16 +48,16 @@ class ApiService {
         return this.request('auth/login', 'POST', { username, password, remember });
     }
 
-    async anunciantes() {
-        return this.request('lista/anunciantes', 'POST');
+    async anunciantes(id = null) {
+        return this.request('lista/anunciantes', 'POST', { id });
     }
 
-    async layoutCardapio() {
-        return this.request('lista/layoutCardapio', 'POST');
+    async layoutCardapio(id = null) {
+        return this.request('lista/layoutCardapio', 'POST', { id });
     }
 
-    async prodCardapio() {
-        return this.request('lista/prodCardapio', 'POST');
+    async prodCardapio(id = null) {
+        return this.request('lista/prodCardapio', 'POST', { id });
     }
 
     async addAnunciantes(nome, arquivo, tempo, data_finalizacao, status) {
