@@ -110,5 +110,16 @@ class ApiService {
         return this.request('update/layoutCardapio', 'POST', formData, true);
     }
 
+    async deletAnunciantes(id) {
+        return this.request('deletar/anunciantes', 'DELETE', { id });
+    }
+    
+    async deletProdCardapio(id) {
+        return this.request('deletar/prodCardapio', 'DELETE', { id });
+    }  
+
+    async deletLayoutCardapio(id) {
+        return this.request('deletar/layoutCardapio', 'DELETE', { id });
+    }
 
 }
