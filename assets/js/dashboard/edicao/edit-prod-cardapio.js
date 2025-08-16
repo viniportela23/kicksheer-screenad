@@ -55,10 +55,10 @@ async function setupEditProdCardapioModal(button) {
 
             try {
               const response = await apiService.editProdCardapio(
-                idProduto, 
+                idProduto,
+                status, 
                 nome, 
-                preco, 
-                status
+                preco
               );
               
               toastr.success('Produto atualizado com sucesso!', 'Sucesso', {

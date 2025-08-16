@@ -84,7 +84,7 @@ class ApiService {
         return this.request('adiciona/layoutCardapio', 'POST', formData, true);
     }
 
-    async editAnunciantes(id, nome, tempo, data_finalizacao, status, arquivo = null) {
+    async editAnunciantes(id, status, nome = null, tempo = null, data_finalizacao = null, arquivo = null) {
         const formData = new FormData();
         formData.append('id', id);
         formData.append('nome', nome);
@@ -96,11 +96,11 @@ class ApiService {
         return this.request('update/anunciantes', 'POST', formData, true);
     }
 
-    async editProdCardapio(id, nome, preco, status) {
+    async editProdCardapio(id, status, nome = null, preco = null) {
         return this.request('update/prodCardapio', 'PUT', { id, nome, preco, status });
     }
 
-    async editLayoutCardapio(id, nome, status, arquivo) {
+    async editLayoutCardapio(id, status, nome = null, arquivo = null) {
         const formData = new FormData();
         formData.append('id', id);
         formData.append('nome', nome);

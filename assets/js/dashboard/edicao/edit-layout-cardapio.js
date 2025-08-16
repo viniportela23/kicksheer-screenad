@@ -60,9 +60,9 @@ async function setupEditLayoutCardapioModal(button) {
 
             try {
               const response = await apiService.editLayoutCardapio(
-                idLayout, 
-                nome, 
+                idLayout,
                 status, 
+                nome,
                 arquivo
               );
               

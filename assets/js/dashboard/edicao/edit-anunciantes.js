@@ -74,10 +74,10 @@ async function setupEditAnunciantesModal(button) {
             try {
               const response = await apiService.editAnunciantes(
                 idAnunciante, 
-                nome, 
-                tempo, 
+                status,
+                nome,
+                tempo,
                 data_finalizacao, 
-                status, 
                 arquivo
               );
               
