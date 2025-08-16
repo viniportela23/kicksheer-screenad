@@ -9,7 +9,7 @@ function setupAddAnunciantesModal() {
           <input type="text" id="anunciante-nome" required>
         </div>
         <div class="form-group">
-          <label for="anunciante-tempo">Tempo (minutos)</label>
+          <label for="anunciante-tempo">Tempo (segundos)</label>
           <input type="number" id="anunciante-tempo" required>
         </div>
         <div class="form-group">

@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     '<span class="status-badge inactive">Inativo</span>';
 
                 const btnStatus = layout.status === 1 ? 
-                    'class="action-btn deactivate">Desativar' : 
-                    'class="action-btn activate">Ativar';
+                    'class="action-btn deactivate" acao="0" >Desativar' : 
+                    'class="action-btn activate" acao="1">Ativar';
 
                 const imagemLink = layout.imagem ? 
                     `<img src="http://192.168.0.104/api/uploads/layouts/${layout.imagem}" alt="Girl in a jacket" width="50">` : 

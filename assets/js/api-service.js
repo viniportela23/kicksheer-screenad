@@ -84,4 +84,31 @@ class ApiService {
         return this.request('adiciona/layoutCardapio', 'POST', formData, true);
     }
 
+    async editAnunciantes(id, nome, tempo, data_finalizacao, status, arquivo = null) {
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('nome', nome);
+        formData.append('tempo', tempo);
+        formData.append('data_finalizacao', data_finalizacao);
+        formData.append('status', status);
+        formData.append('arquivo', arquivo);
+
+        return this.request('update/anunciantes', 'PUT', formData, true);
+    }
+
+    async editProdCardapio(id, nome, preco, status) {
+        return this.request('update/prodCardapio', 'PUT', { id, nome, preco, status });
+    }
+
+    async editLayoutCardapio(id, nome, status, arquivo) {
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('nome', nome);
+        formData.append('status', status);
+        formData.append('arquivo', arquivo);
+
+        return this.request('update/layoutCardapio', 'PUT', formData, true);
+    }
+
+
 }

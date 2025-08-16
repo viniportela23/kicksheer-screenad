@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     '<span class="status-badge inactive">Inativo</span>';
 
                 const btnStatus = produto.status === 1 ? 
-                    'class="action-btn deactivate">Desativar' : 
-                    'class="action-btn activate">Ativar';
+                    'class="action-btn deactivate" acao="0" >Desativar' : 
+                    'class="action-btn activate" acao="1">Ativar';
 
                 // Formata a data
                 const dataCriacao = new Date(produto.data_criacao).toLocaleDateString();
