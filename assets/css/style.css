@@ -15,6 +15,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
+    flex-direction: column
 }
 
 body::before {
@@ -33,7 +34,27 @@ body::before {
     animation: rotate 20s linear infinite;
     z-index: -1;
 }
+.grid-incial-login {
+    display: grid;
+    grid-template-rows: auto min-content; /* Conteúdo principal e footer */
+    width: 100%;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    flex: 1; /* Faz o container crescer para ocupar o espaço disponível */
 
+}
+
+footer {
+    text-align: center;
+    padding: 25px 20px;
+    background: rgba(82, 88, 98, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    color: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    margin-top: auto; /* Isso empurra o footer para baixo */
+}
 /* Animações */
 @keyframes rotate {
     0% {
@@ -64,6 +85,7 @@ body::before {
     border: 1px solid rgba(235, 170, 44, 0.2);
     position: relative;
     overflow: hidden;
+    justify-self: anchor-center;
 }
 
 .login-container::before {
@@ -99,6 +121,14 @@ body::before {
 .login-header p {
     color: #2e3643;
     font-size: 14px;
+}
+.logo-index {
+    max-width: 250px; /* Ajuste conforme necessário */
+    height: auto;
+}
+.logo-dash {
+    max-width: 150px; /* Ajuste conforme necessário */
+    height: auto;
 }
 
 /* Campos de Entrada */
@@ -238,7 +268,13 @@ body::before {
     right: -50px;
     background: radial-gradient(circle, rgba(46, 54, 67, 0.1) 0%, transparent 70%);
 }
-/* Dashboard Layout */
+
+
+
+/* Dashboard Layout --------------------------------------------------------------------------------------------------------------*/
+
+
+
 .dashboard-container {
     display: flex;
     width: 100%;

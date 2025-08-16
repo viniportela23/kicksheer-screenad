@@ -42,3 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+function checkAuthAndRedirect() {
+    const token = AuthService.getToken();
+    if (token) {
+        // Se houver um token, redireciona para a dashboard
+        window.location.href = './dashboard.html';
+    }
+    // Se não houver token, o usuário permanece na página atual
+}
+
+// Adiciona o event listener para quando a página carregar
+window.addEventListener('DOMContentLoaded', checkAuthAndRedirect);

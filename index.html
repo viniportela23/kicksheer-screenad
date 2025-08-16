@@ -3,48 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kicksheer - Acesso do Adminstrador</title>
+    <title>Kicksheer Screenad - Login</title>
     <link rel="icon" href="assets/imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
-<body>
-    <div class="decoration"></div>
-    <div class="decoration"></div>
-    
-    <div class="login-container">
-        <div class="login-header">
-            <h1>Acesso do Adminstrador</h1>
+<body>   
+    <div class="grid-incial-login">
+        <div class="login-container">
+
+            <div class="login-header">
+                <img src="./assets/imagens/logo-1.png" alt="Logo da Empresa" class="logo-index">
+            </div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="username" required>
+                    <label for="username">Usuário</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Senha</label>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Lembrar-me</label>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-button">Entrar</button>
+                
+                <div class="signup-link">
+                    Não tem uma conta? <a href="#">Registre-se</a>
+                </div>
+            </form>
         </div>
-        
-        <form id="loginForm">
-            <div class="input-group">
-                <input type="text" id="username" required>
-                <label for="username">Usuário</label>
+        <footer >
+            <div>Desenvolvido por 
+                <a href="https://www.instagram.com/" target="_blank" style="text-decoration: none; color: #000; font-weight: bold; font-size: 16px;">
+                    Kicksheer
+                </a>
             </div>
-            
-            <div class="input-group">
-                <input type="password" id="password" required>
-                <label for="password">Senha</label>
+            <div style="margin-top: 10px; font-size: 13px; color: rgba(0,0,0,0.7);">
+                © 2025 Todos os direitos reservados
             </div>
-            
-            <div class="remember-forgot">
-                <div class="remember-me">
-                    <input type="checkbox" id="remember">
-                    <label for="remember">Lembrar-me</label>
-                </div>
-                <div class="forgot-password">
-                    <a href="#">Esqueceu a senha?</a>
-                </div>
-            </div>
-            
-            <button type="submit" class="login-button">Entrar</button>
-            
-            <div class="signup-link">
-                Não tem uma conta? <a href="#">Registre-se</a>
-            </div>
-        </form>
-    </div>
+        </footer>
+    </div> 
+
     <!-- No final do <body>, antes do auth.js -->
     <script src="./assets/js/token-service.js"></script>
     <script src="./assets/js/api-service.js"></script>
@@ -53,5 +64,5 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+</body> 
 </html>
