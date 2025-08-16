@@ -96,13 +96,44 @@ async function setupEditLayoutCardapioModal(button) {
   }
 }
 
-// Configura o event delegation
 function setupGlobalEventListenersLayoutCardapio() {
   document.addEventListener('click', function(event) {
     if (event.target && event.target.id === 'btn-editar-layout') {
       setupEditLayoutCardapioModal(event.target);
     }
+    
+    // Adiciona o listener para o botão de alterar status
+    if (event.target && event.target.id === 'btn-alterar-status-layout') {
+      event.preventDefault();
+      alterarStatusLayout(event.target);
+    }
   });
+}
+
+// Função para alterar o status do produto
+async function alterarStatusLayout(button) {
+  const idLayout = button.getAttribute('id-layout');
+  const status = button.getAttribute('acao'); // 1 para ativar, 0 para desativar
+  
+  try {
+    const response = await apiService.editLayoutCardapio(idLayout, status);
+    
+    toastr.success('Status do layout atualizado com sucesso!', 'Sucesso', {
+      timeOut: 5000
+    });
+    
+    // Atualiza a interface conforme necessário
+    const anunciantesButton = document.getElementById('btn-layout-cardapio');
+    if (anunciantesButton) {
+      anunciantesButton.click();
+    }
+    
+  } catch (error) {
+    console.error('Erro ao alterar status do layout:', error);
+    toastr.error(error.message || 'Erro ao alterar status do layout', 'Erro', {
+      timeOut: 5000
+    });
+  }
 }
 
 // Inicializa os listeners globais quando o DOM estiver pronto

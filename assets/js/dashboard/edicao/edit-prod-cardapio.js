@@ -97,7 +97,39 @@ function setupGlobalEventListenersProdCardapio() {
     if (event.target && event.target.id === 'btn-editar-produto') {
       setupEditProdCardapioModal(event.target);
     }
+    
+    // Adiciona o listener para o botão de alterar status
+    if (event.target && event.target.id === 'btn-alterar-status-produto') {
+      event.preventDefault();
+      alterarStatusProduto(event.target);
+    }
   });
+}
+
+// Função para alterar o status do produto
+async function alterarStatusProduto(button) {
+  const idProduto = button.getAttribute('id-produto');
+  const status = button.getAttribute('acao'); // 1 para ativar, 0 para desativar
+  
+  try {
+    const response = await apiService.editProdCardapio(idProduto, status);
+    
+    toastr.success('Status do produto atualizado com sucesso!', 'Sucesso', {
+      timeOut: 5000
+    });
+    
+    // Atualiza a interface conforme necessário
+    const anunciantesButton = document.getElementById('btn-prod-cardapio');
+    if (anunciantesButton) {
+      anunciantesButton.click(); // Recarrega a lista de produtos
+    }
+    
+  } catch (error) {
+    console.error('Erro ao alterar status do produto:', error);
+    toastr.error(error.message || 'Erro ao alterar status do produto', 'Erro', {
+      timeOut: 5000
+    });
+  }
 }
 
 // Inicializa os listeners globais quando o DOM estiver pronto

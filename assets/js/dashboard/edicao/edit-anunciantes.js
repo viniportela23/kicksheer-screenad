@@ -117,7 +117,39 @@ function setupGlobalEventListenersAnunciantes() {
     if (event.target && event.target.id === 'btn-editar-anunciante') {
       setupEditAnunciantesModal(event.target);
     }
+    
+    // Adiciona o listener para o botão de alterar status
+    if (event.target && event.target.id === 'btn-alterar-status-anunciante') {
+      event.preventDefault();
+      alterarStatusAnunciante(event.target);
+    }
   });
+}
+
+// Função para alterar o status do produto
+async function alterarStatusAnunciante(button) {
+  const idAnunciante = button.getAttribute('id-anunciante');
+  const status = button.getAttribute('acao'); // 1 para ativar, 0 para desativar
+  
+  try {
+    const response = await apiService.editAnunciantes(idAnunciante, status);
+    
+    toastr.success('Status do anunciante atualizado com sucesso!', 'Sucesso', {
+      timeOut: 5000
+    });
+    
+    // Atualiza a interface conforme necessário
+    const anunciantesButton = document.getElementById('btn-anunciantes');
+    if (anunciantesButton) {
+      anunciantesButton.click();
+    }
+    
+  } catch (error) {
+    console.error('Erro ao alterar status do anunciante:', error);
+    toastr.error(error.message || 'Erro ao alterar status do anunciante', 'Erro', {
+      timeOut: 5000
+    });
+  }
 }
 
 // Inicializa os listeners globais quando o DOM estiver pronto
