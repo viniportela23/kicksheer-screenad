@@ -1,77 +1,101 @@
-function handleAddProdCardapioClick() {
-  const modal = modalDashboard({
-    title: 'Adicionar Produto do Cardapio',
-    content: `
-      <form id="form-anunciante">
-        <div class="form-group">
-          <label for="prod-cardapio-nome">Nome</label>
-          <input type="text" id="prod-cardapio-nome" required>
-        </div>
-        <div class="form-group">
-          <label for="prod-cardapio-preco">Preço</label>
-          <input type="number" id="prod-cardapio-preco" step="0.01" min="0" required>
-        </div>
-        <div class="form-group switch-group">
-          <label for="prod-cardapio-status">Status</label>
-          <label class="switch">
-            <input type="checkbox" id="prod-cardapio-status">
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </form>
-    `,
-    buttons: [
-      {
-        text: 'Cancelar',
-        class: 'cancel-btn',
-        handler: () => modal.close()
-      },
-      {
-        text: 'Salvar',
-        class: 'save-btn',
-        handler: async () => {
-          const nome = document.getElementById('prod-cardapio-nome').value;
-          const precoInput = document.getElementById('prod-cardapio-preco').value;
-          const preco = parseFloat(precoInput.replace(',', '.'));
-          const status = document.getElementById('prod-cardapio-status').checked ? 1 : 0;
+async function setupEditProdCardapioModal(button) {
+  // Obtém o ID do anúncio do atributo do botão
+  const idProduto = button.getAttribute('id-produto');
+  
+  try {
+    // Busca os dados do anúncio
+    const response = await apiService.prodCardapio(idProduto);
+    const produto = response.dados;
+    const idRandom = Math.random();
+        
+    // Cria o modal com os dados preenchidos e IDs dinâmicos
+    const modal = modalDashboard({
+      title: 'Editar Anunciante',
+      content: `
+        <form id="form-produto-${idRandom}">
+          <div class="form-group">
+            <label for="produto-nome-${idRandom}">Nome</label>
+            <input type="text" id="produto-nome-${idRandom}" value="${produto.nome || ''}" required>
+          </div>
+          <div class="form-group">
+            <label for="produto-preco-${idRandom}">Preço</label>
+            <input type="number" id="produto-preco-${idRandom}" step="0.01" min="0" value="${produto.preco || ''}" required>
+          </div>
 
-          if (!nome || !precoInput) {
-            toastr.warning('Preencha todos os campos obrigatórios', 'Atenção!', {
-              timeOut: 5000
-            });
-            return;
-          }
+          <div class="form-group switch-group">
+            <label for="produto-status-${idRandom}">Status</label>
+            <label class="switch">
+              <input type="checkbox" id="produto-status-${idRandom}" ${produto.status == 1 ? 'checked' : ''}>
+              <span class="slider round" id="produto-status2-${idRandom}"></span>
+            </label>
+          </div>
+        </form>
+      `,
+      buttons: [
+        {
+          text: 'Cancelar',
+          class: 'cancel-btn',
+          handler: () => modal.close()
+        },
+        {
+          text: 'Salvar',
+          class: 'save-btn',
+          handler: async () => {
+            const nome = document.getElementById(`produto-nome-${idRandom}`).value;
+            const precoInput = document.getElementById(`produto-preco-${idRandom}`).value;
+            const preco = parseFloat(precoInput.replace(',', '.'));
+            const status = document.getElementById(`produto-status-${idRandom}`).checked ? 1 : 0;
 
-          try {
-            const response = await apiService.addProdCardapio(nome, preco, status);
-            toastr.success('Produto do cardapio adicionado com sucesso!', 'Sucesso', {
-              timeOut: 5000
-            });
-            modal.close();
-            const anunciantesButton = document.getElementById('btn-prod-cardapio');
-            if (anunciantesButton) {
-              anunciantesButton.click();
+            if (!nome || !precoInput) {
+              toastr.warning('Preencha todos os campos obrigatórios', 'Atenção!', {
+                timeOut: 5000
+              });
+              return;
             }
-          } catch (error) {
-            console.error('Erro ao adicionar produto do cardapio:', error);
-            toastr.error(error.message || 'Erro ao adicionar produto do cardapio', 'Erro', {
-              timeOut: 5000
-            });
+
+            try {
+              const response = await apiService.editProdCardapio(
+                idProduto, 
+                nome, 
+                preco, 
+                status
+              );
+              
+              toastr.success('Produto atualizado com sucesso!', 'Sucesso', {
+                timeOut: 5000
+              });
+              
+              modal.close();
+              const anunciantesButton = document.getElementById('btn-prod-cardapio');
+              if (anunciantesButton) {
+                anunciantesButton.click();
+              }
+            } catch (error) {
+              console.error('Erro ao atualizar produto:', error);
+              toastr.error(error.message || 'Erro ao atualizar produto', 'Erro', {
+                timeOut: 5000
+              });
+            }
           }
         }
-      }
-    ]
-  });
+      ]
+    });
 
-  modal.open();
+    modal.open();
+    
+  } catch (error) {
+    console.error('Erro ao carregar dados do produto:', error);
+    toastr.error('Erro ao carregar dados do produto', 'Erro', {
+      timeOut: 5000
+    });
+  }
 }
 
 // Configura o event delegation
 function setupGlobalEventListenersProdCardapio() {
-  // Event delegation para o botão de adicionar produto
   document.addEventListener('click', function(event) {
-    if (event.target && event.target.id === 'btn-adicionar-prod-cardapio') {
-      handleAddProdCardapioClick();
+    if (event.target && event.target.id === 'btn-editar-produto') {
+      setupEditProdCardapioModal(event.target);
     }
   });
 }

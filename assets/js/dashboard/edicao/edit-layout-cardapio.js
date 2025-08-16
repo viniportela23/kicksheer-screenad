@@ -66,7 +66,7 @@ async function setupEditLayoutCardapioModal(button) {
                 arquivo
               );
               
-              toastr.success('Anunciante atualizado com sucesso!', 'Sucesso', {
+              toastr.success('Layout atualizado com sucesso!', 'Sucesso', {
                 timeOut: 5000
               });
               
@@ -76,8 +76,8 @@ async function setupEditLayoutCardapioModal(button) {
                 anunciantesButton.click();
               }
             } catch (error) {
-              console.error('Erro ao atualizar anunciante:', error);
-              toastr.error(error.message || 'Erro ao atualizar anunciante', 'Erro', {
+              console.error('Erro ao atualizar layout:', error);
+              toastr.error(error.message || 'Erro ao atualizar layout', 'Erro', {
                 timeOut: 5000
               });
             }
@@ -89,8 +89,8 @@ async function setupEditLayoutCardapioModal(button) {
     modal.open();
     
   } catch (error) {
-    console.error('Erro ao carregar dados do anúncio:', error);
-    toastr.error('Erro ao carregar dados do anúncio', 'Erro', {
+    console.error('Erro ao carregar dados do layout:', error);
+    toastr.error('Erro ao carregar dados do layout', 'Erro', {
       timeOut: 5000
     });
   }
