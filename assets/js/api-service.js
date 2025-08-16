@@ -93,7 +93,7 @@ class ApiService {
         formData.append('status', status);
         formData.append('arquivo', arquivo);
 
-        return this.request('update/anunciantes', 'PUT', formData, true);
+        return this.request('update/anunciantes', 'POST', formData, true);
     }
 
     async editProdCardapio(id, nome, preco, status) {
@@ -107,7 +107,7 @@ class ApiService {
         formData.append('status', status);
         formData.append('arquivo', arquivo);
 
-        return this.request('update/layoutCardapio', 'PUT', formData, true);
+        return this.request('update/layoutCardapio', 'POST', formData, true);
     }
 
 
