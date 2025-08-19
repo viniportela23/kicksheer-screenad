@@ -34,6 +34,22 @@ async function setupEditLayoutCardapioModal(button) {
             <label for="layout-arquivo-${idRandom}">Novo Arquivo (Foto/Video - Opcional)</label>
             <input type="file" id="layout-arquivo-${idRandom}" accept="image/*, video/*">
           </div>
+          <div class="form-group">
+            <label for="layout-cor-titulo-${idRandom}">Cor do Titulo</label>
+            <input type="color" id="layout-cor-titulo-${idRandom}" value="${layout.cor_titulo || '#ffffff'}">
+          </div>
+          <div class="form-group">
+            <label for="layout-cor-fundo-${idRandom}">Cor de Fundo</label>
+            <input type="color" id="layout-cor-fundo-${idRandom}" value="${layout.cor_fundo || '#ffffff'}">
+          </div>
+          <div class="form-group">
+            <label for="layout-cor-nome-${idRandom}">Cor do Nome</label>
+            <input type="color" id="layout-cor-nome-${idRandom}" value="${layout.cor_nome || '#000000'}">
+          </div>
+          <div class="form-group">
+            <label for="layout-cor-preco-${idRandom}">Cor do Preço</label>
+            <input type="color" id="layout-cor-preco-${idRandom}" value="${layout.cor_preco || '#000000'}">
+          </div>
         </form>
       `,
       buttons: [
@@ -50,6 +66,10 @@ async function setupEditLayoutCardapioModal(button) {
             const status = document.getElementById(`layout-status-${idRandom}`).checked ? 1 : 0;
             const arquivoInput = document.getElementById(`layout-arquivo-${idRandom}`);
             const arquivo = arquivoInput.files.length > 0 ? arquivoInput.files[0] : null;
+            const corTitulo = document.getElementById(`layout-cor-titulo-${idRandom}`).value;
+            const corFundo = document.getElementById(`layout-cor-fundo-${idRandom}`).value;
+            const corNome = document.getElementById(`layout-cor-nome-${idRandom}`).value;
+            const corPreco = document.getElementById(`layout-cor-preco-${idRandom}`).value;
 
             if (!nome) {
               toastr.warning('Preencha todos os campos obrigatórios', 'Atenção!', {
@@ -63,7 +83,11 @@ async function setupEditLayoutCardapioModal(button) {
                 idLayout,
                 status, 
                 nome,
-                arquivo
+                arquivo,
+                corTitulo, 
+                corFundo, 
+                corNome,  
+                corPreco  
               );
               
               toastr.success('Layout atualizado com sucesso!', 'Sucesso', {

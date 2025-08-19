@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kicksheer - Dashboard Admin</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Kicksheer Screenad - Anúncios</title>
+    <link rel="icon" href="assets/imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/anuncios.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
-<body>
+<body id="page-anuncios">
+    <!-- Container inicial para exibição do conteúdo -->
+    <div id="conteudo-container"></div>
 
     <script src="./assets/js/verifica-token-sesao.js"></script>
-    <script src="./assets/js/authService.js"></script>
-    <script src="./assets/js/apiService.js"></script>
+    <script src="./assets/js/token-service.js"></script>
+    <script src="./assets/js/api-service.js"></script>
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/anuncios.js"></script>
+
+    <script src="./assets/js/anuncios/list-dados.js"></script>
+    <script src="./assets/js/anuncios/organiza-dados.js"></script>
+    <script src="./assets/js/anuncios/exibe-anunciantes.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

@@ -52,16 +52,16 @@ class ApiService {
         return this.request('lista/usuario', 'POST');
     }
 
-    async anunciantes(id = null) {
-        return this.request('lista/anunciantes', 'POST', { id });
+    async anunciantes(id = null, status = null) {
+        return this.request('lista/anunciantes', 'POST', { id ,status });
     }
 
-    async layoutCardapio(id = null) {
-        return this.request('lista/layoutCardapio', 'POST', { id });
+    async layoutCardapio(id = null, status = null) {
+        return this.request('lista/layoutCardapio', 'POST', { id ,status });
     }
 
-    async prodCardapio(id = null) {
-        return this.request('lista/prodCardapio', 'POST', { id });
+    async prodCardapio(id = null, status = null) {
+        return this.request('lista/prodCardapio', 'POST', { id ,status });
     }
 
     async addAnunciantes(nome, arquivo, tempo, data_finalizacao, status) {
@@ -79,10 +79,14 @@ class ApiService {
         return this.request('adiciona/prodCardapio', 'POST', { nome, preco, status });
     }
 
-    async addLayoutCardapio(nome, arquivo, status) {
+    async addLayoutCardapio(nome, arquivo, status, corTitulo, corFundo, corNome, corPreco) {
         const formData = new FormData();
         formData.append('nome', nome);
         formData.append('status', status);
+        formData.append('corTitulo', corTitulo);
+        formData.append('corFundo', corFundo);
+        formData.append('corNome', corNome);
+        formData.append('corPreco', corPreco);
         formData.append('arquivo', arquivo);
 
         return this.request('adiciona/layoutCardapio', 'POST', formData, true);
@@ -104,11 +108,16 @@ class ApiService {
         return this.request('update/prodCardapio', 'PUT', { id, nome, preco, status });
     }
 
-    async editLayoutCardapio(id, status, nome = null, arquivo = null) {
+    async editLayoutCardapio(id, status, nome = null, arquivo = null, corTitulo = null, corFundo = null, corNome = null, corPreco = null) {
         const formData = new FormData();
         formData.append('id', id);
         formData.append('nome', nome);
         formData.append('status', status);
+        formData.append('corTitulo', corTitulo);
+        formData.append('corFundo', corFundo);
+        formData.append('corNome', corNome);
+        formData.append('corPreco', corPreco);
+
         formData.append('arquivo', arquivo);
 
         return this.request('update/layoutCardapio', 'POST', formData, true);

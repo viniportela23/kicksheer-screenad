@@ -18,6 +18,22 @@ function handleAddLayoutCardapioClick() {
           <label for="anunciante-arquivo">Arquivo (Foto/Video)</label>
           <input type="file" id="anunciante-arquivo" accept="image/*, video/*">
         </div>
+        <div class="form-group">
+          <label for="anunciante-cor-titulo">Cor do Titulo</label>
+          <input type="color" id="anunciante-cor-titulo" value="#ffffff">
+        </div>
+        <div class="form-group">
+          <label for="anunciante-cor-fundo">Cor de Fundo</label>
+          <input type="color" id="anunciante-cor-fundo" value="#ffffff">
+        </div>
+        <div class="form-group">
+          <label for="anunciante-cor-nome">Cor do Nome</label>
+          <input type="color" id="anunciante-cor-nome" value="#000000">
+        </div>
+        <div class="form-group">
+          <label for="anunciante-cor-preco">Cor do Preço</label>
+          <input type="color" id="anunciante-cor-preco" value="#000000">
+        </div>
       </form>
     `,
     buttons: [
@@ -33,9 +49,12 @@ function handleAddLayoutCardapioClick() {
           const nome = document.getElementById('anunciante-nome').value;
           const status = document.getElementById('anunciante-status').checked ? 1 : 0;
           const arquivo = document.getElementById('anunciante-arquivo').files[0];
+          const corTitulo = document.getElementById('anunciante-cor-titulo').value;
+          const corFundo = document.getElementById('anunciante-cor-fundo').value;
+          const corNome = document.getElementById('anunciante-cor-nome').value;
+          const corPreco = document.getElementById('anunciante-cor-preco').value;
 
           if (!nome || !arquivo) {
-
             toastr.warning('Preencha todos os campos obrigatórios', 'Atenção!', {
                 timeOut: 5000
             });
@@ -43,7 +62,8 @@ function handleAddLayoutCardapioClick() {
           }
 
           try {
-            const response = await apiService.addLayoutCardapio(nome, arquivo, status);
+            // ATUALIZAR A CHAMADA DA API PARA INCLUIR AS NOVAS CORES
+            const response = await apiService.addLayoutCardapio(nome, arquivo, status, corTitulo, corFundo, corNome, corPreco);
             toastr.success('Anunciante adicionado com sucesso!', 'Sucesso', {
                 timeOut: 5000
             });
@@ -65,9 +85,9 @@ function handleAddLayoutCardapioClick() {
 
   modal.open();
 }
+
 // Configura o event delegation
 function setupGlobalEventListenersLayoutCardapio() {
-  // Event delegation para o botão de adicionar produto
   document.addEventListener('click', function(event) {
     if (event.target && event.target.id === 'btn-adicionar-layout-cardapio') {
       handleAddLayoutCardapioClick();
