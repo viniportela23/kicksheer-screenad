@@ -8,7 +8,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Função para verificar se o cookie existe
+    const hasNotificationCookie = () => {
+        return document.cookie.split(';').some(cookie => 
+            cookie.trim().startsWith('layout_notification_shown=')
+        );
+    };
+
+    // Função para criar o cookie
+    const setNotificationCookie = () => {
+        const date = new Date();
+        date.setFullYear(date.getFullYear() + 10); // 10 anos a partir de agora
+        document.cookie = `layout_notification_shown=true; expires=${date.toUTCString()}; path=/`;
+    };
+
     const loadLayoutCardapio = async () => {
+        // Verifica se a notificação já foi mostrada
+        if (!hasNotificationCookie()) {
+            // Mostra o modal de confirmação apenas se o cookie não existir
+            const respostaComfirmada = await Swal.fire({
+                title: 'ATENÇÃO!!',
+                text: "O sistema permite apenas um cardápio ativo por vez. Ao ativar um novo, o cardápio anterior é desativado automaticamente. Se todos os cardápios estiverem desativados, o sistema irá ignorar a funcionalidade e exibir apenas anúncios na tela.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, entendo!',
+                cancelButtonText: 'Cancelar'
+            });
+
+            // Se o usuário confirmou, cria o cookie
+            if (respostaComfirmada) {
+                setNotificationCookie();
+            } else {
+                // Se cancelou, não continua o processo
+                return;
+            }
+        }
+
+        // Continua com o carregamento do layout (com ou sem confirmação)
         const cabecalhoTableBody = document.getElementById('cabecalho-da-tabela');
         const tableBody = document.getElementById('corpo-da-tabela');
         const tituloBody = document.getElementById('titulo-pagina');
@@ -65,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imagemLink = layout.imagem ? 
                     `<img src="http://192.168.0.104/api/uploads/layouts/${layout.imagem}" alt="Girl in a jacket" width="50">` : 
                     '<i class="fas fa-image" style="color: #ccc;"></i>';
-
 
                 row.innerHTML = `
                     <td>${layout.nome}</td>

@@ -140,4 +140,5 @@
     transform: translateY(-50%);
     border-bottom: 2px dotted #000; /* Linha de pontos laranja */
     z-index: 0; /* Coloca os pontos atrás do texto e preço */
+    margin-top: 6px;
 }

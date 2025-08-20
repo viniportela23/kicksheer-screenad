@@ -25,9 +25,7 @@ class ExibidorAnuncios {
         
         // Exibe o cardápio
         this.mostrarConteudo(this.dados.htmlCardapio, 'cardapio');
-        
-        console.log('Exibindo cardápio por 20 segundos');
-        
+                
         // Agenda a exibição do próximo anúncio
         this.timer = setTimeout(() => {
             this.emExibicao = false;
@@ -50,9 +48,7 @@ class ExibidorAnuncios {
         
         // Exibe o anúncio
         this.mostrarConteudo(htmlAnuncio, 'anuncio');
-        
-        console.log(`Exibindo anúncio: ${anuncio.nome}`);
-        
+                
         // Verifica se é um vídeo para usar a duração real
         const extensao = anuncio.arquivo.split('.').pop().toLowerCase();
         const isVideo = ['mp4', 'webm', 'ogg', 'mov', 'avi'].includes(extensao);
@@ -100,7 +96,6 @@ class ExibidorAnuncios {
     
     usarDuracaoVideo(anuncio) {
         const duracao = this.videoElement.duration;
-        console.log(`Duração do vídeo detectada: ${duracao} segundos`);
         
         // Converte para milissegundos e adiciona um pequeno buffer
         const tempoExibicao = (duracao * 1000) + 500;
@@ -110,7 +105,6 @@ class ExibidorAnuncios {
     }
     
     agendarProximo(tempo) {
-        console.log(`Tempo de exibição: ${tempo/1000} segundos`);
         
         // Agenda a próxima ação
         this.timer = setTimeout(() => {
@@ -212,7 +206,6 @@ class ExibidorAnuncios {
 let exibidorAnuncios = null;
 
 const iniciarExibicaoAnuncios = (dadosOrganizados) => {
-    console.log('Iniciando exibição com dados:', dadosOrganizados);
     
     // Para qualquer exibição anterior
     if (exibidorAnuncios) {

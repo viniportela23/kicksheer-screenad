@@ -17,6 +17,10 @@ async function setupEditLayoutCardapioModal(button) {
             <label for="layout-nome-${idRandom}">Nome</label>
             <input type="text" id="layout-nome-${idRandom}" value="${layout.nome || ''}" required>
           </div>
+          <div class="form-group">
+            <label for="layout-tempo-${idRandom}">Tempo (segundos)</label>
+            <input type="number" id="layout-tempo-${idRandom}" value="${layout.tempo || ''}" required>
+          </div>
           <div class="form-group switch-group">
             <label for="layout-status-${idRandom}">Status</label>
             <label class="switch">
@@ -66,6 +70,7 @@ async function setupEditLayoutCardapioModal(button) {
             const status = document.getElementById(`layout-status-${idRandom}`).checked ? 1 : 0;
             const arquivoInput = document.getElementById(`layout-arquivo-${idRandom}`);
             const arquivo = arquivoInput.files.length > 0 ? arquivoInput.files[0] : null;
+            const tempo = document.getElementById(`layout-tempo-${idRandom}`).value;
             const corTitulo = document.getElementById(`layout-cor-titulo-${idRandom}`).value;
             const corFundo = document.getElementById(`layout-cor-fundo-${idRandom}`).value;
             const corNome = document.getElementById(`layout-cor-nome-${idRandom}`).value;
@@ -84,6 +89,7 @@ async function setupEditLayoutCardapioModal(button) {
                 status, 
                 nome,
                 arquivo,
+                tempo,
                 corTitulo, 
                 corFundo, 
                 corNome,  

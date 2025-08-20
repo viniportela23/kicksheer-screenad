@@ -1,7 +1,21 @@
 const organizaDados = (dados) => {
-    console.log('Dados recebidos para organização:', dados);
     
-    if (!dados || !dados.anunciantes || !dados.produtos || !dados.layout) {
+    // Verifica se não há layout válido
+    if (!dados || !dados.layout || !dados.layout.dados || dados.layout.dados.length === 0) {
+        // Se não tem layout, processa apenas os anunciantes válidos
+        const anunciantes = dados && dados.anunciantes ? processarAnunciantes(dados.anunciantes.dados) : [];
+        
+        return {
+            htmlCardapio: '', // Cardápio vazio
+            anunciantes,
+            tempoCardapio: 0, // Tempo zero para cardápio
+            layout: null,
+            apenasAnuncios: true // Flag indicando que só tem anúncios
+        };
+    }
+
+    // Verifica se os outros dados necessários existem
+    if (!dados.anunciantes || !dados.produtos) {
         throw new Error('Dados incompletos para organização');
     }
 
@@ -14,17 +28,16 @@ const organizaDados = (dados) => {
     // 3. Processar anunciantes válidos
     const anunciantes = processarAnunciantes(dados.anunciantes.dados);
     
-    console.log('Anunciantes válidos:', dados.anunciantes.dados);
-    console.log('Produtos válidos:', produtos);
     
     // 4. Montar o HTML do cardápio
     const htmlCardapio = montarCardapioHTML(layout, produtos);
-    
+
     return {
         htmlCardapio,
         anunciantes,
-        tempoCardapio: 2000000, // 20 segundos em milissegundos
-        layout
+        tempoCardapio: layout.tempo, // 20 segundos em milissegundos
+        layout,
+        apenasAnuncios: false
     };
 };
 
@@ -47,6 +60,7 @@ const processarLayout = (layout) => {
         nome: layout.nome,
         imagem: layout.imagem,
         status: layout.status,
+        tempo: layout.tempo * 1000,
         cor_titulo: layout.cor_titulo ? hexToRgb(layout.cor_titulo) : '255, 255, 255', // Branco padrão
         cor_fundo: layout.cor_fundo ? hexToRgb(layout.cor_fundo) : '255, 255, 255', // Branco padrão
         cor_nome: layout.cor_nome ? hexToRgb(layout.cor_nome) : '0, 0, 0', // Preto padrão

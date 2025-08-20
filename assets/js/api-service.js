@@ -79,10 +79,11 @@ class ApiService {
         return this.request('adiciona/prodCardapio', 'POST', { nome, preco, status });
     }
 
-    async addLayoutCardapio(nome, arquivo, status, corTitulo, corFundo, corNome, corPreco) {
+    async addLayoutCardapio(nome, arquivo, status, tempo, corTitulo, corFundo, corNome, corPreco) {
         const formData = new FormData();
         formData.append('nome', nome);
         formData.append('status', status);
+        formData.append('tempo', tempo);
         formData.append('corTitulo', corTitulo);
         formData.append('corFundo', corFundo);
         formData.append('corNome', corNome);
@@ -108,11 +109,12 @@ class ApiService {
         return this.request('update/prodCardapio', 'PUT', { id, nome, preco, status });
     }
 
-    async editLayoutCardapio(id, status, nome = null, arquivo = null, corTitulo = null, corFundo = null, corNome = null, corPreco = null) {
+    async editLayoutCardapio(id, status, nome = null, arquivo = null, tempo = null, corTitulo = null, corFundo = null, corNome = null, corPreco = null) {
         const formData = new FormData();
         formData.append('id', id);
         formData.append('nome', nome);
         formData.append('status', status);
+        formData.append('tempo', tempo);
         formData.append('corTitulo', corTitulo);
         formData.append('corFundo', corFundo);
         formData.append('corNome', corNome);

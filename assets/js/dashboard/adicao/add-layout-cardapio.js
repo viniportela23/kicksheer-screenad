@@ -7,6 +7,10 @@ function handleAddLayoutCardapioClick() {
           <label for="anunciante-nome">Nome</label>
           <input type="text" id="anunciante-nome" required>
         </div>
+        <div class="form-group">
+          <label for="anunciante-tempo">Tempo (segundos)</label>
+          <input type="number" id="anunciante-tempo" required>
+        </div>
         <div class="form-group switch-group">
           <label for="anunciante-status">Status</label>
           <label class="switch">
@@ -49,11 +53,13 @@ function handleAddLayoutCardapioClick() {
           const nome = document.getElementById('anunciante-nome').value;
           const status = document.getElementById('anunciante-status').checked ? 1 : 0;
           const arquivo = document.getElementById('anunciante-arquivo').files[0];
+          const tempo = document.getElementById('anunciante-tempo').value;
           const corTitulo = document.getElementById('anunciante-cor-titulo').value;
           const corFundo = document.getElementById('anunciante-cor-fundo').value;
           const corNome = document.getElementById('anunciante-cor-nome').value;
           const corPreco = document.getElementById('anunciante-cor-preco').value;
 
+          
           if (!nome || !arquivo) {
             toastr.warning('Preencha todos os campos obrigatórios', 'Atenção!', {
                 timeOut: 5000
@@ -63,7 +69,7 @@ function handleAddLayoutCardapioClick() {
 
           try {
             // ATUALIZAR A CHAMADA DA API PARA INCLUIR AS NOVAS CORES
-            const response = await apiService.addLayoutCardapio(nome, arquivo, status, corTitulo, corFundo, corNome, corPreco);
+            const response = await apiService.addLayoutCardapio(nome, arquivo, status, tempo, corTitulo, corFundo, corNome, corPreco);
             toastr.success('Anunciante adicionado com sucesso!', 'Sucesso', {
                 timeOut: 5000
             });
