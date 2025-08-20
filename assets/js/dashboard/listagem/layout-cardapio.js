@@ -30,11 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: 'ATENÇÃO!!',
                 text: "O sistema permite apenas um cardápio ativo por vez. Ao ativar um novo, o cardápio anterior é desativado automaticamente. Se todos os cardápios estiverem desativados, o sistema irá ignorar a funcionalidade e exibir apenas anúncios na tela.",
                 icon: 'warning',
-                showCancelButton: true,
                 confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sim, entendo!',
-                cancelButtonText: 'Cancelar'
+                confirmButtonText: 'Sim, entendo!'
             });
 
             // Se o usuário confirmou, cria o cookie

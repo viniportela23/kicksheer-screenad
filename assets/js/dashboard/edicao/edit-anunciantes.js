@@ -131,6 +131,23 @@ async function alterarStatusAnunciante(button) {
   const idAnunciante = button.getAttribute('id-anunciante');
   const status = button.getAttribute('acao'); // 1 para ativar, 0 para desativar
   
+  // Verifica se o botão tem a classe 'warning'
+  if (button.classList.contains('warning')) {
+    // Recarrega a lista de anunciantes
+    const anunciantesButtonEdit = document.getElementById('btn-editar-anunciante');
+    if (anunciantesButtonEdit) {
+      anunciantesButtonEdit.click();
+    }
+    
+    // Mostra a mensagem de alerta
+    toastr.warning('Para ativar este anunciante você precisa deixar a data maior que a data de hoje!', 'Atenção!', {
+      timeOut: 7000
+    });
+    
+    // Encerra a função aqui mesmo
+    return;
+  }
+  
   try {
     const response = await apiService.editAnunciantes(idAnunciante, status);
     
@@ -151,6 +168,5 @@ async function alterarStatusAnunciante(button) {
     });
   }
 }
-
 // Inicializa os listeners globais quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', setupGlobalEventListenersAnunciantes);

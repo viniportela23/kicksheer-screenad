@@ -85,7 +85,13 @@
     border-radius: 5px;
     font-size: 18px;
     font-family: 'Poppins', 'Montserrat', sans-serif;
+
 }
+
+.anuncio-info h3{
+    text-transform: capitalize;
+}
+
 
 .produtos-lista {
     margin-top: 20px;
@@ -142,3 +148,4 @@
     z-index: 0; /* Coloca os pontos atrás do texto e preço */
     margin-top: 6px;
 }
+
