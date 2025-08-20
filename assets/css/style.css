@@ -411,7 +411,6 @@ footer {
 .content {
     flex: 1;
     padding: 25px;
-    overflow-y: auto;
 }
 
 .content-header {
@@ -449,6 +448,7 @@ footer {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: auto;
 }
 
 table {
@@ -548,7 +548,7 @@ tr:hover {
 }
 #corpo-da-tabela {
     display: block; /* Necessário para que height e overflow funcionem */
-    max-height: 300px; /* Ajuste esta altura conforme necessário */
+    max-height: 67vh;
     overflow-y: auto; /* Habilita a rolagem vertical quando necessário */
 }
 
@@ -556,6 +556,7 @@ tr:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+    height: auto;
 }
 
 thead, tbody tr {

@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btnLayoutCardapioBody.innerHTML = '<a href="#" id="btn-layout-cardapio" class="menu-item active"><span>Layout de cardápios</span></a>';
 
-        cabecalhoTableBody.innerHTML = '<tr><th>Nome</th><th>Imagem</th><th>Status</th><th>Ações</th></tr>';
+        cabecalhoTableBody.innerHTML = '<tr><th>Nome</th><th>Imagem</th><th>Status</th><th style="width: 240px;">Ações</th></tr>';
 
         tableBody.innerHTML = '<tr><td colspan="3" class="text-center">Carregando layouts...</td></tr>';
 
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${layout.nome}</td>
                     <td>${imagemLink}</td>
                     <td>${status}</td>
-                    <td>
+                    <td style="width: 240px;">
                         <button id="btn-editar-layout" id-layout="${layout.id}" class="action-btn edit">Editar</button>
                         <button id="btn-alterar-status-layout" id-layout="${layout.id}" ${btnStatus}</button>
                         <button id="btn-deletar-layout" id-layout="${layout.id}" class="action-btn delete">Excluir</button>

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btnPordCardapiosBody.innerHTML = '<a href="#" id="btn-prod-cardapio" class="menu-item active"><span>Produtos do cardápio</span></a>';
 
-        cabecalhoTableBody.innerHTML = '<tr><th>Nome</th><th>Preço</th><th>Data Criação</th><th>Status</th><th>Ações</th></tr>';
+        cabecalhoTableBody.innerHTML = '<tr><th>Nome</th><th>Preço</th><th>Data Criação</th><th>Status</th><th style="width: 240px;">Ações</th></tr>';
 
         tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Carregando produtos...</td></tr>';
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${precoFormatado}</td>
                     <td>${dataCriacao}</td>
                     <td>${status}</td>
-                    <td>
+                    <td style="width: 240px;">
                         <button id="btn-editar-produto" id-produto="${produto.id}" class="action-btn edit">Editar</button>
                         <button id="btn-alterar-status-produto" id-produto="${produto.id}" ${btnStatus}</button>
                         <button id="btn-deletar-produto" id-produto="${produto.id}" class="action-btn delete">Excluir</button>
