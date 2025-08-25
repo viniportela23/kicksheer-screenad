@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('active');
         });
         btnLayoutCardapioBody.querySelector('.menu-item').classList.add('active');
+        const url = API_BASE_URL + '/uploads/layouts/';
 
         try {
             // Faz a requisição para a API
@@ -98,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'class="action-btn activate" acao="1">Ativar';
 
                 const imagemLink = layout.imagem ? 
-                    `<img src="http://192.168.0.104/api/uploads/layouts/${layout.imagem}" alt="Girl in a jacket" width="50">` : 
+                    `<img src="${url}${layout.imagem}" alt="Girl in a jacket" width="50">` : 
                     '<i class="fas fa-image" style="color: #ccc;"></i>';
 
                 row.innerHTML = `

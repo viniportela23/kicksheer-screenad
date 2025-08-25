@@ -1,6 +1,7 @@
 async function setupEditAnunciantesModal(button) {
   // Obtém o ID do anúncio do atributo do botão
   const idAnunciante = button.getAttribute('id-anunciante');
+  const url = API_BASE_URL + '/uploads/anunciantes/';
   
   try {
     // Busca os dados do anúncio
@@ -39,7 +40,7 @@ async function setupEditAnunciantesModal(button) {
             <label>Arquivo Atual</label>
             <div style="text-align: center; margin-bottom: 10px;">
               ${anuncio.arquivo ? 
-                `<img src="http://192.168.0.104/api/uploads/anunciantes/${anuncio.arquivo}" alt="Imagem do anúncio" width="100" style="display: block; margin: 0 auto;">` : 
+                `<img src="${url}${anuncio.arquivo}" alt="Imagem do anúncio" width="100" style="display: block; margin: 0 auto;">` : 
                 '<i class="fas fa-image" style="color: #ccc; font-size: 50px;"></i><br><small>Nenhum arquivo</small>'}
             </div>
             <label for="anunciante-arquivo-${idRandom}">Novo Arquivo (Foto/Video - Opcional)</label>
@@ -134,7 +135,8 @@ async function alterarStatusAnunciante(button) {
   // Verifica se o botão tem a classe 'warning'
   if (button.classList.contains('warning')) {
     // Recarrega a lista de anunciantes
-    const anunciantesButtonEdit = document.getElementById('btn-editar-anunciante');
+    const anunciantesButtonEdit = document.querySelector(`#btn-editar-anunciante[id-anunciante="${idAnunciante}"]`);
+
     if (anunciantesButtonEdit) {
       anunciantesButtonEdit.click();
     }

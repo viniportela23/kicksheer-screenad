@@ -3,7 +3,7 @@ class ApiService {
         this.baseUrl = baseUrl;
     }
     async request(endpoint, method = 'GET', data = null, isFormData = false) {
-        const url = `${this.baseUrl}/${endpoint}`;
+        let url = `${this.baseUrl}/${endpoint}`;
         const headers = {};
         const config = {
             method,
@@ -11,22 +11,36 @@ class ApiService {
             credentials: 'include'
         };
 
-        if (!isFormData) {
-            headers['Content-Type'] = 'application/json';
-            if (data) {
-                config.body = JSON.stringify(data);
-            }
-        } else {
-            if (data) {
-                config.body = data;
+        // Para métodos GET, adiciona parâmetros na URL
+        if (method === 'GET' && data) {
+            const params = new URLSearchParams();
+            Object.keys(data).forEach(key => {
+                if (data[key] !== null && data[key] !== undefined) {
+                    params.append(key, data[key]);
+                }
+            });
+            url += `?${params.toString()}`;
+        } 
+        // Para outros métodos, trata o corpo normalmente
+        else if (method !== 'GET') {
+            if (!isFormData) {
+                headers['Content-Type'] = 'application/json';
+                if (data) {
+                    config.body = JSON.stringify(data);
+                }
+            } else {
+                if (data) {
+                    config.body = data;
+                }
             }
         }
+
         // Adiciona token se existir
         const token = AuthService.getToken();
         if (token) {
             headers['Authorization'] = `Bearer ${token}`;
+            headers['Token-Authorization'] = `Bearer ${token}`;
         }
-
 
         try {
             const response = await fetch(url, config);
@@ -35,7 +49,11 @@ class ApiService {
             if (!response.ok) {
                 throw new Error(responseData.message || 'Erro na requisição');
             }
-            AuthService.setToken(responseData.token);
+            
+            // Só atualiza o token se vier na resposta
+            if (responseData.token) {
+                AuthService.setToken(responseData.token);
+            }
 
             return responseData;
         } catch (error) {
@@ -49,19 +67,19 @@ class ApiService {
     }
 
     async usuario() {
-        return this.request('lista/usuario', 'POST');
+        return this.request('lista/usuario', 'GET');
     }
 
     async anunciantes(id = null, status = null) {
-        return this.request('lista/anunciantes', 'POST', { id ,status });
+        return this.request('lista/anunciantes', 'GET', { id ,status });
     }
 
     async layoutCardapio(id = null, status = null) {
-        return this.request('lista/layoutCardapio', 'POST', { id ,status });
+        return this.request('lista/layoutCardapio', 'GET', { id ,status });
     }
 
     async prodCardapio(id = null, status = null) {
-        return this.request('lista/prodCardapio', 'POST', { id ,status });
+        return this.request('lista/prodCardapio', 'GET', { id ,status });
     }
 
     async addAnunciantes(nome, arquivo, tempo, data_finalizacao, status) {

@@ -127,13 +127,14 @@ class ExibidorAnuncios {
         const extensao = anuncio.arquivo.split('.').pop().toLowerCase();
         const isImagem = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(extensao);
         const isVideo = ['mp4', 'webm', 'ogg', 'mov', 'avi'].includes(extensao);
-        
+        const url = API_BASE_URL + '/uploads/anunciantes/';
+
         let conteudo = '';
         
         if (isImagem) {
             conteudo = `
                 <div class="anuncio-imagem">
-                    <img src="http://192.168.0.104/api/uploads/anunciantes/${anuncio.arquivo}" 
+                    <img src="${url}${anuncio.arquivo}" 
                          alt="${anuncio.nome}" 
                          style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
@@ -143,7 +144,7 @@ class ExibidorAnuncios {
                 <div class="anuncio-video" style="width: 100%; height: 100%;">
                     <video id="video-anuncio" autoplay muted playsinline 
                            style="width: 100%; height: 100%; object-fit: contain;">
-                        <source src="http://192.168.0.104/api/uploads/anunciantes/${anuncio.arquivo}" 
+                        <source src="${url}${anuncio.arquivo}" 
                                 type="video/${extensao === 'mov' ? 'quicktime' : extensao}">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>

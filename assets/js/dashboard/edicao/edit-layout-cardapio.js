@@ -1,7 +1,8 @@
 async function setupEditLayoutCardapioModal(button) {
   // Obtém o ID do anúncio do atributo do botão
   const idLayout = button.getAttribute('id-layout');
-  
+  const url = API_BASE_URL + '/uploads/layouts/';
+
   try {
     // Busca os dados do anúncio
     const response = await apiService.layoutCardapio(idLayout);
@@ -32,7 +33,7 @@ async function setupEditLayoutCardapioModal(button) {
             <label>Arquivo Atual</label>
             <div style="text-align: center; margin-bottom: 10px;">
               ${layout.imagem ? 
-                `<img src="http://192.168.0.104/api/uploads/layouts/${layout.imagem}" alt="Imagem do anúncio" width="100" style="display: block; margin: 0 auto;">` : 
+                `<img src="${url}${layout.imagem}" alt="Imagem do anúncio" width="100" style="display: block; margin: 0 auto;">` : 
                 '<i class="fas fa-image" style="color: #ccc; font-size: 50px;"></i><br><small>Nenhum arquivo</small>'}
             </div>
             <label for="layout-arquivo-${idRandom}">Novo Arquivo (Foto/Video - Opcional)</label>

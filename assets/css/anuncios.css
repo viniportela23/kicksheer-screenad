@@ -116,7 +116,7 @@
 .produto-item h3 {
     margin: 0;
     color: #000;
-    font-size: 1.3em;
+    font-size: 20px;
     font-weight: 600;
     font-family: 'Poppins', 'Montserrat', sans-serif;
     text-transform: uppercase;
@@ -126,10 +126,10 @@
 }
 
 .preco {
-    font-size: 1.3em;
+    font-size: 20px;
     font-weight: bold;
-    color: #000;
     font-family: 'Poppins', 'Montserrat', sans-serif;
+    color: #000;
     margin-left: 15px;
     white-space: nowrap;
     padding-left: 5px; /* Espaço entre pontos e preço */
@@ -140,8 +140,6 @@
 .produto-item::after {
     content: "";
     position: absolute;
-    left: 100px;
-    right: 85px;
     top: 50%;
     transform: translateY(-50%);
     border-bottom: 2px dotted #000; /* Linha de pontos laranja */

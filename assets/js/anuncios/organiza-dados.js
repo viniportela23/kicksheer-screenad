@@ -104,10 +104,56 @@ const formatarPreco = (preco) => {
     return isNaN(numero) ? 'R$ 0,00' : `R$ ${numero.toFixed(2).replace('.', ',')}`;
 };
 
+// Função para calcular o espaço ocupado pelos caracteres na simulação
+const calcularEspacoSimulacao = (texto, elementoTeste) => {
+    elementoTeste.textContent = texto;
+    return elementoTeste.offsetWidth;
+};
+
+// Função paralela para simular o layout e calcular os espaços
+const simularLayoutProduto = (produto, layout) => {
+    // Criar container temporário para simulação
+    const containerSimulacao = document.createElement('div');
+    containerSimulacao.id = 'page-anuncios';
+    containerSimulacao.style.position = 'absolute';
+    containerSimulacao.style.left = '-9999px';
+    containerSimulacao.style.top = '-9999px';
+    containerSimulacao.style.visibility = 'hidden';
+    
+    // Criar estrutura idêntica ao layout real
+    const produtoSimulacao = document.createElement('div');
+    produtoSimulacao.className = 'produto-item';
+    
+    const nomeSimulacao = document.createElement('h3');
+    nomeSimulacao.style.color = `rgb(${layout.cor_nome})`;
+    
+    const precoSimulacao = document.createElement('span');
+    precoSimulacao.className = 'preco';
+    
+    // Adicionar elementos ao DOM temporariamente
+    produtoSimulacao.appendChild(nomeSimulacao);
+    produtoSimulacao.appendChild(precoSimulacao);
+    containerSimulacao.appendChild(produtoSimulacao);
+    document.body.appendChild(containerSimulacao);
+    
+    // Calcular larguras
+    const larguraNome = calcularEspacoSimulacao(produto.nome, nomeSimulacao);
+    const larguraPreco = calcularEspacoSimulacao(produto.preco, precoSimulacao);
+    
+    // Remover elementos de simulação
+    document.body.removeChild(containerSimulacao);
+
+    return {
+        resultadoLeft: larguraNome + 9, // +13px para a margem
+        resultadoRigt: larguraPreco + 9  // +13px para a margem
+    };
+};
+
 const montarCardapioHTML = (layout, produtos) => {
     // Usando as cores em RGB para o CSS
+    const url = API_BASE_URL + '/uploads/layouts/';
     let html = `
-        <div class="cardapio-container" style="background-image: url('http://192.168.0.104/api/uploads/layouts/${layout.imagem}'); background-color: rgba(${layout.cor_fundo}, 0.9);">
+        <div class="cardapio-container" style="background-image: url('${url}${layout.imagem}'); background-color: rgba(${layout.cor_fundo}, 0.9);">
             <div class="cardapio-header">
                 <h1 style="color: rgb(${layout.cor_titulo});">${layout.nome}</h1>
             </div>
@@ -115,8 +161,22 @@ const montarCardapioHTML = (layout, produtos) => {
     `;
     
     produtos.forEach(produto => {
+        const idRandom = Math.floor(Math.random() * 10000);
+        
+        // Usar a função de simulação para calcular os espaços precisos
+        const espacos = simularLayoutProduto(produto, layout);
+        const resultadoLeft = espacos.resultadoLeft;
+        const resultadoRigt = espacos.resultadoRigt;
+
         html += `
-            <div class="produto-item">
+            <style>
+                #id-random-${idRandom}::after {
+                    left: ${resultadoLeft}px;
+                    right: ${resultadoRigt}px;
+                }
+            </style>
+
+            <div id="id-random-${idRandom}" class="produto-item">
                 <h3 style="color: rgb(${layout.cor_nome});">${produto.nome}</h3>
                 <span class="preco" style="color: rgb(${layout.cor_preco});">${produto.preco}</span>
             </div>
