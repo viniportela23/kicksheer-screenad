@@ -6,7 +6,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Efeitos de Fundo */
 body {
     background-color: #efefef;
     height: 100vh;
@@ -18,6 +17,7 @@ body {
     flex-direction: column
 }
 
+/* Efeitos de Fundo 
 body::before {
     content: '';
     position: absolute;
@@ -34,6 +34,8 @@ body::before {
     animation: rotate 20s linear infinite;
     z-index: -1;
 }
+*/
+
 .grid-incial-login {
     display: grid;
     grid-template-rows: auto min-content; /* Conteúdo principal e footer */
@@ -85,7 +87,7 @@ footer {
     border: 1px solid rgba(235, 170, 44, 0.2);
     position: relative;
     overflow: hidden;
-    justify-self: anchor-center;
+    justify-self: center;
 }
 
 .login-container::before {
@@ -383,29 +385,66 @@ footer {
 }
 
 .notifications {
-    display: flex;
-    gap: 20px;
-    color: white;
+  display: flex;
+  gap: 20px;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .notification-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  color: white;
+}
+
+.notification-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.notification-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .notification-badge {
-    background-color: #ebaa2c;
-    color: #2e3643;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
+  background-color: #ebaa2c;
+  color: #2e3643;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  box-shadow: 0 0 0 2px #2e3643;
+}
+
+.notification-icon svg {
+  color: #c8c8c8;
+}
+
+.notification-item:hover svg {
+  color: #ffffff;
+}
+
+.profile-link {
+  background-color: rgba(46, 54, 67, 0.3);
+}
+
+.profile-link:hover {
+  background-color: rgba(46, 54, 67, 0.5);
 }
 
 .content {

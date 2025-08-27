@@ -51,7 +51,7 @@ class BaseModal {
   }
 
   openModal() {
-    this.modal.style.display = 'block';
+    this.modal.style.display = 'grid';
     document.body.style.overflow = 'hidden';
   }
 

@@ -34,6 +34,7 @@
     color: white;
     align-content: space-evenly;
     font-family: 'Poppins', 'Montserrat', sans-serif;
+    text-align-last: center;
 }
 
 .cardapio-header h1 {
@@ -95,11 +96,10 @@
 
 .produtos-lista {
     margin-top: 20px;
-    justify-self: anchor-center;
     min-width: 500px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 8px;
-
+    display: inline-block;
 }
 
 

@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${dataCriacao}</td>
                     <td>${dataFinalizacao}</td>
                     <td>${status}</td>
-                    <td style="width: 240px;">
+                    <td style="width: 280px;">
                         <button id="btn-editar-anunciante" id-anunciante="${anuncio.id}" class="action-btn edit">Editar</button>
                         <button id="btn-alterar-status-anunciante" ${btnStatus}</button>
                         <button id="btn-deletar-anunciante" id-anunciante="${anuncio.id}" class="action-btn delete">Excluir</button>

@@ -70,6 +70,10 @@ class ApiService {
         return this.request('lista/usuario', 'GET');
     }
 
+    async notificacoes() {
+        return this.request('lista/notificacoes', 'GET');
+    }
+
     async anunciantes(id = null, status = null) {
         return this.request('lista/anunciantes', 'GET', { id ,status });
     }

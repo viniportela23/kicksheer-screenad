@@ -8,9 +8,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  justify-content: center;
-  align-items: center;
+  justify-content: initial;
   justify-items: center;
+  align-content: center;
 }
 
 .base-modal .modal-content {
@@ -29,6 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #f8f8f8;
 }
 
 .modal-header h2 {
@@ -42,6 +43,7 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0 10px;
+  color: #f8f8f8;
 }
 
 .modal-content {

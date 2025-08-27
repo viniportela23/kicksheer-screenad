@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${layout.nome}</td>
                     <td>${imagemLink}</td>
                     <td>${status}</td>
-                    <td style="width: 240px;">
+                    <td style="width: 280px;">
                         <button id="btn-editar-layout" id-layout="${layout.id}" class="action-btn edit">Editar</button>
                         <button id="btn-alterar-status-layout" id-layout="${layout.id}" ${btnStatus}</button>
                         <button id="btn-deletar-layout" id-layout="${layout.id}" class="action-btn delete">Excluir</button>
