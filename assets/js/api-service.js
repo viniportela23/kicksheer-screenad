@@ -131,6 +131,10 @@ class ApiService {
         return this.request('update/prodCardapio', 'PUT', { id, nome, preco, status });
     }
 
+    async editNotificacoes(id, status) {
+        return this.request('update/notificacoes', 'PUT', { id, status });
+    }
+
     async editLayoutCardapio(id, status, nome = null, arquivo = null, tempo = null, corTitulo = null, corFundo = null, corNome = null, corPreco = null) {
         const formData = new FormData();
         formData.append('id', id);

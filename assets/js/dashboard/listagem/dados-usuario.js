@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
       // Get user data from response
       const userData = response.dados[0];
-      
+      const numNotificacoes = response.notificacoes;
+
       // Format and display username
       const nomeUserElement = document.getElementById('nome-user');
       if (nomeUserElement) {
@@ -31,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         vencimentoElement.innerHTML = `<span>Vencimento: ${formattedDate}</span>`;
+      }
+
+      const notificacaoNumElement = document.getElementById('numero-notificacoes');
+      if (notificacaoNumElement) {
+        notificacaoNumElement.innerHTML = `<span class="notification-badge">${numNotificacoes}</span>`;
       }
 
     } catch (error) {
